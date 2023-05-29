@@ -41,5 +41,13 @@ namespace TestDemoMVCCodeFirst.Controllers
                 return View();
             }
         }
+        [HttpGet]
+        public ActionResult Edit(long? typeId)
+        {
+            ViewBag.Message = null;
+            TempData["TypeId"] = typeId;
+            TempData.Keep();
+            return View();
+        }
     }
 }

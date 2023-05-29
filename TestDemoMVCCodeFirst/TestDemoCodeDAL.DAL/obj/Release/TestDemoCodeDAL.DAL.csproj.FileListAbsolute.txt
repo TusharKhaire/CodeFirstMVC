@@ -1,0 +1,15 @@
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\TestDemoCodeDAL.DAL.dll.config
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\TestDemoCodeDAL.DAL.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\TestDemoCodeDAL.DAL.pdb
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\EntityFramework.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\EntityFramework.SqlServer.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\Microsoft.AspNet.Identity.Core.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\EntityFramework.xml
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\EntityFramework.SqlServer.xml
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\Microsoft.AspNet.Identity.Core.xml
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Release\TestDemoCodeDAL.DAL.Migrations.InitialCreate.resources
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Release\TestDemoCodeDAL.DAL.csproj.GenerateResource.Cache
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Release\TestDemoCodeDAL.DAL.dll
+E:\ERPDemo\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Release\TestDemoCodeDAL.DAL.pdb

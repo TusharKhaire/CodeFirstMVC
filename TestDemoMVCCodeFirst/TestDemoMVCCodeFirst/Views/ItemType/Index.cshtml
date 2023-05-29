@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TestDemoCodeDAL.DAL.Entity.Masters.ItemType>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Item Types</h2><br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TypeName)</th>
+   
+        <th>@Html.DisplayNameFor(model => model.Details)</th>
+        <th></th>
+    </tr>
+    @foreach (var id in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayName(id.TypeName)
+            </th>
+            <th>@Html.DisplayName(id.Details)</th>
+            <th>
+                @Html.ActionLink("Edit", "Edit",new {id=id.TypeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = id.TypeId })
+            </th>
+        </tr>
+    }
+</table>

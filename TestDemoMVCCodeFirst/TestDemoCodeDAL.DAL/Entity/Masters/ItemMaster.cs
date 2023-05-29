@@ -9,7 +9,7 @@ using TestDemoCodeDAL.DAL.Entity.Masters;
 
 namespace TestDemoCodeDAL.DAL.Entity.Masters
 {
-    public class ItemMaster
+    public class ItemMaster   
     {
         [Key]
         public Guid ItemCode { get; set; }

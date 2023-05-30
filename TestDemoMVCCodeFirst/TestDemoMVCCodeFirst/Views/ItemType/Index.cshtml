@@ -13,16 +13,16 @@
         <th>@Html.DisplayNameFor(model => model.Details)</th>
         <th></th>
     </tr>
-    @foreach (var id in Model)
+    @foreach (var type in Model)
     {
         <tr>
             <th>
-                @Html.DisplayName(id.TypeName)
+                @Html.DisplayName(type.TypeName)
             </th>
-            <th>@Html.DisplayName(id.Details)</th>
+            <th>@Html.DisplayName(type.Details)</th>
             <th>
-                @Html.ActionLink("Edit", "Edit",new {id=id.TypeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = id.TypeId })
+                @Html.ActionLink("Edit", "Edit",new {id=type.TypeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = type.TypeId })
             </th>
         </tr>
     }

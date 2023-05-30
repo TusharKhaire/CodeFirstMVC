@@ -1,0 +1,27 @@
+﻿@model TestDemoCodeDAL.DAL.Entity.Masters.ItemType
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<h3>Are Sure to delete  this item ?</h3>
+<div>
+    <h4> Type Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt> @Html.DisplayNameFor(x => x.TypeName) </dt>
+        <dd> @Html.DisplayFor(x => x.TypeName) </dd>
+        <dt> @Html.DisplayNameFor(x => x.Details) </dt>
+        <dd> @Html.DisplayFor(x => x.Details)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -62,7 +62,6 @@ E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Debug\EntityFramework.x
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Debug\EntityFramework.SqlServer.xml
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.csprojAssemblyReference.cache
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.InitialCreate.resources
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.ItemType.resources
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.csproj.GenerateResource.cache
@@ -70,3 +69,4 @@ E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.D
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.csproj.CopyComplete
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.pdb
+E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.csprojAssemblyReference.cache

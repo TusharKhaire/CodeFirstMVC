@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerDetailsController.cs" />
+    <Compile Include="Controllers\GodownController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\ItemTypeController.cs" />
@@ -188,6 +189,8 @@
     <Content Include="Views\ItemMaster\CreateItem.cshtml" />
     <Content Include="Views\ItemType\Edit.cshtml" />
     <Content Include="Views\ItemType\Delete.cshtml" />
+    <Content Include="Views\Godown\Index.cshtml" />
+    <Content Include="Views\Godown\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

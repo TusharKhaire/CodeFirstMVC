@@ -1,0 +1,45 @@
+﻿@model TestDemoCodeDAL.DAL.Entity.Masters.GodownMaster
+
+<h2>Create Godown</h2>
+@{ 
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            alert(json.Encode(@Html.Raw(ViewBag.Message)));
+        </script>
+    }
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(x => x.G_id)
+    <div class="form-group">
+        @Html.LabelFor(x => x.G_Name, "Godown Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.G_Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.G_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Address, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.Details, "Details", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(x => x.Details, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Details, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+             <input type="submit" id="btn_Save" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}

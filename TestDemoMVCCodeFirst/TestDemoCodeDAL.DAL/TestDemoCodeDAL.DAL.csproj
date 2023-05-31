@@ -57,6 +57,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DataConection\DataContext.cs" />
     <Compile Include="Entity\Customer\CustomerDetails.cs" />
+    <Compile Include="Entity\Masters\GodownMaster.cs" />
     <Compile Include="Entity\Masters\ItemMaster.cs" />
     <Compile Include="Entity\Masters\ItemType.cs" />
     <Compile Include="Entity\Users.cs" />

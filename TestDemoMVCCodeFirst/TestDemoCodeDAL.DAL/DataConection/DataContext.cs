@@ -19,5 +19,7 @@ namespace TestDemoCodeDAL.DAL.DataConnection
        
         public DbSet<ItemType> ItemType { get; set; }
         public DbSet<ItemMaster> ItemMaster { get; set; }
+        public DbSet<GodownMaster> godownMaster { get; set; }  //31-05-2023
+
     }
 }

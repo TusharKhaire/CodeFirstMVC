@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestDemoCodeDAL.DAL.Entity.Masters
 {
-    public class GodownMaster
+    public class GodownMaster       //New Add table 
     {
         [Key]
         public Guid G_id { get; set; }

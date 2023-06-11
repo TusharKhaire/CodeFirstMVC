@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,7 +21,7 @@ namespace TestDemoMVCCodeFirst.Controllers
             ItemMaster item = new ItemMaster();
             var result = db.ItemMaster.ToList();
             List<ItemMaster> Itemlist = new List<ItemMaster>();
-            foreach(var type in result)
+            foreach (var type in result)
             {
                 ItemMaster im = new ItemMaster();
                 var itemtypedata = db.ItemType.Where(x => x.TypeId == type.ItemType).FirstOrDefault();
@@ -35,8 +36,8 @@ namespace TestDemoMVCCodeFirst.Controllers
         [HttpGet]
         public ActionResult CreateItem()
         {
-           ItemMaster viewmodel = new ItemMaster();
-            List<SelectListItem> ItemTypeList =new List<SelectListItem>();
+            ItemMaster viewmodel = new ItemMaster();
+            List<SelectListItem> ItemTypeList = new List<SelectListItem>();
             List<DDLData> DlList = new List<DDLData>();
             foreach (var data in db.ItemType.ToList())
             {
@@ -75,9 +76,16 @@ namespace TestDemoMVCCodeFirst.Controllers
                     ModelState.AddModelError("ItemName", "Please Enter ItemName");
                     return View(viewmodel);
                 }
-                else if (item.ItemType==null)
+                else if (item.ItemType == null)
                 {
                     ModelState.AddModelError("ItemType", "Please Select Valid Item Type");
+                    return View(viewmodel);
+
+                }
+                var checkexist = db.ItemMaster.Where(x => x.ItemCode == item.ItemCode).FirstOrDefault();
+                if (checkexist != null)
+                {
+                    ViewBag.Message = "Item " + item.ItemName + " Alredy exist";
                     return View(viewmodel);
 
                 }
@@ -106,7 +114,7 @@ namespace TestDemoMVCCodeFirst.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var item = db.ItemMaster.Where(x => x.ItemCode == id).FirstOrDefault();
-            if(item == null)
+            if (item == null)
             {
                 return HttpNotFound();
             }
@@ -117,15 +125,85 @@ namespace TestDemoMVCCodeFirst.Controllers
             viewmodel.ItemName = item.ItemName;
             viewmodel.Gst = item.Gst;
 
-            foreach(var typename in db.ItemType.ToList())
+            foreach (var typename in db.ItemType.ToList())
             {
                 itemtype.Add(new SelectListItem { Text = typename.TypeName, Value = typename.TypeId.ToString() });
             }
             viewmodel.ItemTypeList = itemtype;
-            viewmodel.ItemType=item.ItemType;
+            viewmodel.ItemType = item.ItemType;
             TempData["itemcode"] = id;
             TempData.Keep();
-            return View("CreateItem",viewmodel);
+            return View("CreateItem", viewmodel);
+        }
+
+        [HttpPost]
+        public ActionResult EditItem(ItemMaster item)
+        {
+            ItemMaster viewmodel = new ItemMaster();
+            List<SelectListItem> ItemTypeList = new List<SelectListItem>();
+            List<DDLData> DlList = new List<DDLData>();
+            foreach (var data in db.ItemType.ToList())
+            {
+                DDLData Dl = new DDLData();
+                Dl.Text = data.TypeName;
+                Dl.Value = data.TypeId.ToString();
+                DlList.Add(Dl);
+                ItemTypeList.Add(new SelectListItem { Text = data.TypeName, Value = data.TypeId.ToString() });
+
+            }
+            viewmodel.ItemTypeList = ItemTypeList;
+            viewmodel.lst_itemType = DlList;
+            ViewBag.Message = null;
+            if (item != null)
+            {
+                if (String.IsNullOrEmpty(item.ItemName))
+                {
+                    ModelState.AddModelError("ItemName", "Please Enter ItemName");
+                    //return View(viewmodel);
+                    return View("CreateItem", viewmodel);
+                }
+                else if (item.ItemType == null)
+                {
+                    ModelState.AddModelError("ItemType", "Please Select Valid Item Type");
+                    //return View(viewmodel);
+                    return View("CreateItem", viewmodel);
+                }
+                //var checkexist = db.ItemMaster.Where(x => x.ItemCode == item.ItemCode).FirstOrDefault();
+                //if (checkexist != null)
+                //{
+                //    ViewBag.Message = "Item " + item.ItemName + " Alredy exist";
+                //    return View("CreateItem", viewmodel);
+
+                //}
+                TestDemoCodeDAL.DAL.Entity.Masters.ItemMaster newItem = new TestDemoCodeDAL.DAL.Entity.Masters.ItemMaster();
+                //newItem.ItemCode = Guid.NewGuid();
+                //newItem.ItemName = item.ItemName;
+                //newItem.ItemType = item.ItemType;
+                //newItem.Gst = item.Gst;
+                //db.ItemMaster.Add(newItem);
+                var checkexist = db.ItemMaster.Where(x => x.ItemCode == item.ItemCode).FirstOrDefault();
+                if (checkexist == null)
+                {
+                    ViewBag.Message = "Please Enter Valid Details";
+                    return View(viewmodel);
+                }
+                newItem.ItemCode = item.ItemCode;
+                newItem.ItemName = item.ItemName;
+                newItem.ItemType = item.ItemType;
+                newItem.Gst = item.Gst;
+                db.Entry(newItem).State = EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.Message = "Item " + item.ItemName + " Modify";
+                ModelState.Clear();
+                //return View(viewmodel);
+                return View("CreateItem", viewmodel);
+            }
+            else
+            {
+                ViewBag.Message = "Please Enter Valid Details";
+                //return View(viewmodel);
+                return View("CreateItem", viewmodel);
+            }
         }
     }
 }

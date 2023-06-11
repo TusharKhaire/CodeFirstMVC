@@ -1,1 +1,20 @@
-﻿
+﻿@model IEnumerable<TestDemoCodeDAL.DAL.Entity.Masters.GodownMaster>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(x=>x.G_Name)</th>
+        <th>@Html.DisplayNameFor(x=>x.Address)</th>
+        <th>@Html.DisplayNameFor(x=>x.Details)</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@Html.DisplayFor(x => item.G_Name)</th>
+            <th>@Html.DisplayFor(x => item.Address)</th>
+            <th>@Html.DisplayFor(x => item.Details)</th>
+            <th>@Html.ActionLink("Edit", "Edit", new { id = item.G_id }) |
+            @Html.ActionLink("Delete","Delete",new { id=item.G_id})</th>
+        </tr>
+    }
+</table>

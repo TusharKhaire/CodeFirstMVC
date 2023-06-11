@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using TestDemoCodeDAL.DAL.Entity.Masters;
+using System.Web.Mvc;
 
 namespace TestDemoMVCCodeFirst.Models
 {
@@ -20,7 +21,10 @@ namespace TestDemoMVCCodeFirst.Models
         public long ItemType { get; set; }
         [Range(0, 100, ErrorMessage = "Please enter Valid Gst up to 100 %")]
         public double Gst { get; set; }
+        public string ItemTypeName { get; set; }
+        public IList<SelectListItem> ItemListName { get; set; }
         public List<DDLData> lst_itemType { get;set;}
+        public IList<SelectListItem> ItemTypeList { get; set; }
     }
     public class DDLData
     {

@@ -191,6 +191,7 @@
     <Content Include="Views\ItemType\Delete.cshtml" />
     <Content Include="Views\Godown\Index.cshtml" />
     <Content Include="Views\Godown\Create.cshtml" />
+    <Content Include="Views\ItemMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

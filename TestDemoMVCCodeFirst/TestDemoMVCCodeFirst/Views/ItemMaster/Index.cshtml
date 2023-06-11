@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TestDemoMVCCodeFirst.Models.ItemMaster>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New Item", "CreateItem")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(x=>x.ItemName)</th>
+        <th>@Html.DisplayNameFor(x=>x.ItemType)</th>
+        <th>@Html.DisplayNameFor(x=>x.Gst)</th>
+        <th></th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <th>@Html.DisplayFor(x=>item.ItemName)</th>
+            <th>@Html.DisplayFor(x=>item.ItemTypeName)</th>
+            <th>@Html.DisplayFor(x=>item.Gst)</th>
+            <th> @Html.ActionLink("Edit", "EditItem", new { id=item.ItemCode}) |
+             @Html.ActionLink("Delete","Delete",new { id=item.ItemCode})</th>
+        </tr>
+    }
+</table>

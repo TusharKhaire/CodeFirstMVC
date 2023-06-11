@@ -28,8 +28,8 @@
             @Html.LabelFor(x => x.ItemType, "Type Name", htmlAttributes: new { @class = "control-lable col-md-2" })
             <div class="col-md-10">
                @* @Html.DropDownListFor(x => x.ItemType, new SelectList(Model.lst_itemType, "Value", "Text"), "", new { @class = "form-control" })*@
-                @Html.DropDownListFor(x => x.ItemType, new SelectList(Model.ItemTypeList, "Value", "Text"), "--Select--", new { @class = "form-control" })
-               <input type="hidden" id="typeid" />
+                @Html.DropDownListFor(x => x.ItemType,Model.ItemTypeList, "--Select--", new { @class = "form-control" })
+               @*<input type="hidden" id="typeid" />*@
                 @Html.ValidationMessageFor(x => x.ItemType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -70,9 +70,9 @@
         return true
     }
     $(document).ready(function () {
-        $("#ItemType").on("change", function () {
-            $("#typeid").val($(this).find("option:selected").text());
-        });
+        //$("#ItemType").on("change", function () {
+        //    $("#typeid").val($(this).find("option:selected").text());
+        //});
     });
 </script>
 

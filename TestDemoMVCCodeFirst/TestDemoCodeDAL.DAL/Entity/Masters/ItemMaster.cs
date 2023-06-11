@@ -16,7 +16,7 @@ namespace TestDemoCodeDAL.DAL.Entity.Masters
         [Required]
         public string ItemName { get; set; }
         [Required]
-        public long ItemType { get; set; }
+        public Guid ItemType { get; set; }
         [Range (0,100,ErrorMessage ="Please enter Valid Gst up to 100 %")]
         public double Gst { get; set; }
     }

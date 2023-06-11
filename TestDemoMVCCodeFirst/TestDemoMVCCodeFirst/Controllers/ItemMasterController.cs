@@ -23,9 +23,7 @@ namespace TestDemoMVCCodeFirst.Controllers
             foreach(var type in result)
             {
                 ItemMaster im = new ItemMaster();
-                byte[] guidData = new byte[16];
-                Array.Copy(BitConverter.GetBytes(type.ItemType), guidData, 8);
-                var itemtypedata = db.ItemType.Where(x => x.TypeId == new Guid(guidData)).FirstOrDefault();
+                var itemtypedata = db.ItemType.Where(x => x.TypeId == type.ItemType).FirstOrDefault();
                 im.ItemCode = type.ItemCode;
                 im.ItemName = type.ItemName;
                 im.ItemTypeName = itemtypedata.TypeName;
@@ -53,7 +51,7 @@ namespace TestDemoMVCCodeFirst.Controllers
             return View(viewmodel);
         }
         [HttpPost]
-        public ActionResult CreateItem([Bind] ItemMaster item)
+        public ActionResult CreateItem(ItemMaster item)
         {
             ItemMaster viewmodel = new ItemMaster();
             List<SelectListItem> ItemTypeList = new List<SelectListItem>();
@@ -77,7 +75,7 @@ namespace TestDemoMVCCodeFirst.Controllers
                     ModelState.AddModelError("ItemName", "Please Enter ItemName");
                     return View(viewmodel);
                 }
-                else if (item.ItemType < 1)
+                else if (item.ItemType==null)
                 {
                     ModelState.AddModelError("ItemType", "Please Select Valid Item Type");
                     return View(viewmodel);

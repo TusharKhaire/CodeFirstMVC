@@ -98,6 +98,7 @@ namespace TestDemoMVCCodeFirst.Controllers
                 db.SaveChanges();
                 ViewBag.Message = "Item " + item.ItemName + " Saved";
                 ModelState.Clear();
+
                 return View(viewmodel);
             }
             else
@@ -168,35 +169,34 @@ namespace TestDemoMVCCodeFirst.Controllers
                     //return View(viewmodel);
                     return View("CreateItem", viewmodel);
                 }
-                //var checkexist = db.ItemMaster.Where(x => x.ItemCode == item.ItemCode).FirstOrDefault();
-                //if (checkexist != null)
-                //{
-                //    ViewBag.Message = "Item " + item.ItemName + " Alredy exist";
-                //    return View("CreateItem", viewmodel);
-
-                //}
-                TestDemoCodeDAL.DAL.Entity.Masters.ItemMaster newItem = new TestDemoCodeDAL.DAL.Entity.Masters.ItemMaster();
-                //newItem.ItemCode = Guid.NewGuid();
-                //newItem.ItemName = item.ItemName;
-                //newItem.ItemType = item.ItemType;
-                //newItem.Gst = item.Gst;
-                //db.ItemMaster.Add(newItem);
                 var checkexist = db.ItemMaster.Where(x => x.ItemCode == item.ItemCode).FirstOrDefault();
                 if (checkexist == null)
                 {
                     ViewBag.Message = "Please Enter Valid Details";
                     return View(viewmodel);
                 }
-                newItem.ItemCode = item.ItemCode;
-                newItem.ItemName = item.ItemName;
-                newItem.ItemType = item.ItemType;
-                newItem.Gst = item.Gst;
-                db.Entry(newItem).State = EntityState.Modified;
+                checkexist.ItemName = item.ItemName;
+                checkexist.ItemType = item.ItemType;
+                checkexist.Gst = item.Gst;
+                db.Entry(checkexist).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.Message = "Item " + item.ItemName + " Modify";
                 ModelState.Clear();
-                //return View(viewmodel);
-                return View("CreateItem", viewmodel);
+                ItemMaster itemobj = new ItemMaster();
+                var result = db.ItemMaster.ToList();
+                List<ItemMaster> Itemlist = new List<ItemMaster>();
+                foreach (var type in result)
+                {
+                    ItemMaster im = new ItemMaster();
+                    var itemtypedata = db.ItemType.Where(x => x.TypeId == type.ItemType).FirstOrDefault();
+                    im.ItemCode = type.ItemCode;
+                    im.ItemName = type.ItemName;
+                    im.ItemTypeName = itemtypedata.TypeName;
+                    im.Gst = type.Gst;
+                    Itemlist.Add(im);
+                }
+                return View("Index",Itemlist);
+                //return View("Index");
             }
             else
             {
@@ -204,6 +204,45 @@ namespace TestDemoMVCCodeFirst.Controllers
                 //return View(viewmodel);
                 return View("CreateItem", viewmodel);
             }
+        }
+        public ActionResult Delete(Guid? id)
+        {
+            var result = db.ItemMaster.ToList();
+            List<ItemMaster> Itemlist = new List<ItemMaster>();
+            foreach (var type in result)
+            {
+                ItemMaster im = new ItemMaster();
+                var itemtypedata = db.ItemType.Where(x => x.TypeId == type.ItemType).FirstOrDefault();
+                im.ItemCode = type.ItemCode;
+                im.ItemName = type.ItemName;
+                im.ItemTypeName = itemtypedata.TypeName;
+                im.Gst = type.Gst;
+                Itemlist.Add(im);
+            }
+            var checkexist = db.ItemMaster.Where(x => x.ItemCode == id).FirstOrDefault();
+            if (checkexist == null)
+            {
+                ViewBag.Message = "Please Enter Valid Details";
+                return View("Index", Itemlist);
+            }
+            db.ItemMaster.Remove(checkexist);
+            //db.Entry(checkexist).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.Message = "Item " + checkexist.ItemName + " Deleted";
+            ModelState.Clear();
+            var result1 = db.ItemMaster.ToList();
+            List<ItemMaster> Itemlist1 = new List<ItemMaster>();
+            foreach (var type in result1)
+            {
+                ItemMaster im = new ItemMaster();
+                var itemtypedata = db.ItemType.Where(x => x.TypeId == type.ItemType).FirstOrDefault();
+                im.ItemCode = type.ItemCode;
+                im.ItemName = type.ItemName;
+                im.ItemTypeName = itemtypedata.TypeName;
+                im.Gst = type.Gst;
+                Itemlist1.Add(im);
+            }
+            return View("Index", Itemlist1);
         }
     }
 }

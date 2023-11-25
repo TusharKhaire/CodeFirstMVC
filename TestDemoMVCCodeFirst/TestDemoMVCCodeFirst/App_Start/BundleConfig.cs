@@ -40,11 +40,9 @@ namespace TestDemoMVCCodeFirst
                 .Include("~/Content/css/select2.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
+                .Include("~/Scripts/jquery-3.7.1.js")
                 .Include("~/Scripts/bootstrap.js")
                 .Include("~/Scripts/bootstrap.min.js")
-                .Include("~/Scripts/jquery-3.7.1.js")
-                .Include("~/Scripts/jquery-3.7.1.min.js")
-                .Include("~/Scripts/jquery-3.7.1.slim.js")
                 .Include("~/Scripts/jquery.validate-vsdoc.js")
                 .Include("~/Scripts/jquery.validate.js")
                 .Include("~/Scripts/jquery.validate.min.js")
@@ -52,8 +50,10 @@ namespace TestDemoMVCCodeFirst
                 .Include("~/Scripts/jquery.validate.unobtrusive.min.js")
                 .Include("~/Scripts/modernizr-2.8.3.js")
                 .Include("~/Scripts/select2.js")
-                .Include("~/Scripts/select2.min.js")
-                .Include("~/Scripts/select2.full.min.js"));
+                .Include("~/Scripts/select2.min.js"));
+                //.Include("~/Scripts/select2.full.min.js")
+                //.Include("~/Scripts/jquery-3.7.1.min.js")
+                //.Include("~/Scripts/jquery-3.7.1.slim.js")
 
         }
     }

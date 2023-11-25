@@ -142,10 +142,12 @@ namespace TestDemoMVCCodeFirst.Controllers
             }
             base.Dispose(disposing);
         }
-
+        [HttpGet]
         public JsonResult GetCustomerByName(string searchText) {
-
-            return Json("",JsonRequestBehavior.AllowGet);
+            if (searchText != "") {
+                var customerName = db.CustomerDetails.Where(a => a.CustomerName.Contains(searchText)).ToList();
+                return Json(customerName.Select(q => new { id = q.Id, text = q.CustomerName }), JsonRequestBehavior.AllowGet);
+            } return Json("",JsonRequestBehavior.AllowGet);
         }
 
     }

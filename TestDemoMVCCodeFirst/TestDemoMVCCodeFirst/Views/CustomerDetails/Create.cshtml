@@ -1,7 +1,7 @@
 ﻿@model TestDemoCodeDAL.DAL.Entity.Customer.CustomerDetails
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    //Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
 @{
     if (ViewBag.Message != null)
@@ -23,7 +23,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control",id= "CustomerName" } })*@
+                @*<input type="text" name="CustomerName" id="CustomerName" class="form-control"/>*@
+                <select class="form-control" id="CustomerName" name="CustomerName" placeholder="Select Group" tabindex="2">
+                    @*@if (!string.IsNullOrEmpty(Model.Id) || !string.IsNullOrEmpty(Model.FullName))
+                    {
+                        <option value="@Model.FullName">@Model.FullName</option>
+                    }*@
+                </select>
                 @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -106,11 +113,12 @@
 @section Scripts
 {
     <script type="text/javascript">
+        
         customerName = $("#CustomerName").select2({
             ajax: {
-                url: '@Url.Action("GetCustomerByName", "Customer")',
+                url: '/CustomerDetails/GetCustomerByName',
+                type:"GET",
                 dataType: 'json',
-                delay: 1000,
                 data: function (params) {
                     return {
                         searchText: params.term
@@ -120,32 +128,11 @@
                     return {
                         results: data
                     };
-                },
-                cache: true
-            },
-            tags: true,
-            createTag: function (params) {
-                return {
-                    id: params.term,
-                    text: params.term,
-                    newOption: true
                 }
-            },
-            templateResult: function (data) {
-                var $result = $("<span></span>");
-                $result.text(data.text);
-               // tabindex: 3;
-                if (data.newOption) {
-                    $result.append(" <em>(new)</em>");
-                }
-                return $result;
-            },
-
-            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-            minimumInputLength: 3,
-            width: false
+            }
         }).on('select2:select', function () {
             $("#Address").focus();
-            });
+                });
+        
     </script>
 }

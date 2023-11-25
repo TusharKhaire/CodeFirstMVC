@@ -2,8 +2,13 @@
 @{
     ViewBag.Title = "CreateItem";
 }
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/zh-TW.min.js" integrity="sha512-whWyZS4LtoXu4LzFJbHIgL9Cr7Sf2+KyeEAGumtXN+8U234v1R89monfd9PLYnC0TNBArmPnkFOVo8ShuMpZaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />*@
+
 <h2>Create New Item</h2>
 @{
+    //Layout = null;
     if (ViewBag.Message != null)
     {
         <script type="text/javascript">
@@ -14,40 +19,41 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken();
-    <div class="form-horizontal container" id="div1">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(x => x.ItemCode)
-        <div class="form-group">
-            @Html.LabelFor(x => x.ItemName, "Item Name", htmlAttributes: new { @class = "control-lable col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(x => x.ItemName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.ItemName, "", new { @class = "text-danger" })
+        <div class="form-horizontal container" id="div1">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(x => x.ItemCode)
+            <div class="form-group">
+                @Html.LabelFor(x => x.ItemName, "Item Name", htmlAttributes: new { @class = "control-lable col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.ItemName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(x => x.ItemName, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => x.ItemType, "Type Name", htmlAttributes: new { @class = "control-lable col-md-2" })
-            <div class="col-md-10">
-               @* @Html.DropDownListFor(x => x.ItemType, new SelectList(Model.lst_itemType, "Value", "Text"), "", new { @class = "form-control" })*@
-                @Html.DropDownListFor(x => x.ItemType,Model.ItemTypeList, "--Select--", new { @class = "form-control" })
-               @*<input type="hidden" id="typeid" />*@
-                @Html.ValidationMessageFor(x => x.ItemType, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(x => x.ItemType, "Type Name", htmlAttributes: new { @class = "control-lable col-md-2" })
+                <div class="col-md-10">
+                    @* @Html.DropDownListFor(x => x.ItemType, new SelectList(Model.lst_itemType, "Value", "Text"), "", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(x => x.ItemType, Model.ItemTypeList, "--Select--", new { @class = "form-control" })
+                    @*<input type="hidden" id="typeid" />*@
+                    @Html.ValidationMessageFor(x => x.ItemType, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(x => x.Gst, "GST %", htmlAttributes: new { @class = "control-lable col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(x => x.Gst, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.Gst, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(x => x.Gst, "GST %", htmlAttributes: new { @class = "control-lable col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(x => x.Gst, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(x => x.Gst, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" id="btn_Save" class="btn btn-default" onclick='return Validate();' />
-                <input type="submit" value="Modify" id="btn_Update" class="btn btn-default" onclick='return Validate();' />
-            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" id="btn_Save" class="btn btn-default" onclick='return Validate();' />
+                    <input type="submit" value="Modify" id="btn_Update" class="btn btn-default" onclick='return Validate();' />
+                </div>
 
+            </div>
+            <input name="mySelect2" type="text" id="mySelect2">
         </div>
-    </div>
     <hr />
     <p>
         @Html.ActionLink("Back TO List", "Index")
@@ -56,6 +62,35 @@
 }
 
 <script type="text/javascript">
+    $("#mySelect2").select2({
+        placeholder: "My Select 2",
+        multiple: false,
+        minimumInputLength: 1,
+        ajax: {
+            url: "/elements/all",
+            dataType: 'json',
+            quietMillis: 250,
+            data: function (term, page) {
+                return {
+                    q: term,
+                };
+            },
+            results: function (data, page) {
+                return { results: data };
+            },
+            cache: true
+        },
+        formatResult: function (element) {
+            return element.text + ' (' + element.id + ')';
+        },
+        formatSelection: function (element) {
+            return element.text + ' (' + element.id + ')';
+        },
+        escapeMarkup: function (m) {
+            return m;
+        }
+    });
+    $("#mySelect2").select2('data', { id: "elementID", text: "Hello!" });
     //debugger;
     function Validate() {
         var itemname = $("#ItemName").val()
@@ -71,9 +106,8 @@
         return true
     }
     $(document).ready(function () {
-        //$("#ItemType").on("change", function () {
-        //    $("#typeid").val($(this).find("option:selected").text());
-        //});
+        $('#ItemType').select2({
+        });
     });
 </script>
 

@@ -142,5 +142,11 @@ namespace TestDemoMVCCodeFirst.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult GetCustomerByName(string searchText) {
+
+            return Json("",JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

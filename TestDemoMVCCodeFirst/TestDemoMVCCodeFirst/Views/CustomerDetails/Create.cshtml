@@ -1,6 +1,7 @@
 ﻿@model TestDemoCodeDAL.DAL.Entity.Customer.CustomerDetails
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
 @{
     if (ViewBag.Message != null)
@@ -102,4 +103,49 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@section Scripts
+{
+    <script type="text/javascript">
+        customerName = $("#CustomerName").select2({
+            ajax: {
+                url: '@Url.Action("GetCustomerByName", "Customer")',
+                dataType: 'json',
+                delay: 1000,
+                data: function (params) {
+                    return {
+                        searchText: params.term
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            },
+            tags: true,
+            createTag: function (params) {
+                return {
+                    id: params.term,
+                    text: params.term,
+                    newOption: true
+                }
+            },
+            templateResult: function (data) {
+                var $result = $("<span></span>");
+                $result.text(data.text);
+               // tabindex: 3;
+                if (data.newOption) {
+                    $result.append(" <em>(new)</em>");
+                }
+                return $result;
+            },
 
+            escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+            minimumInputLength: 3,
+            width: false
+        }).on('select2:select', function () {
+            $("#Address").focus();
+            });
+    </script>
+}

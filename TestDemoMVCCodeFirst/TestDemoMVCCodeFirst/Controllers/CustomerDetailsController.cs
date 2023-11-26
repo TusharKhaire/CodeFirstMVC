@@ -179,7 +179,7 @@ namespace TestDemoMVCCodeFirst.Controllers
         public ActionResult DisplayAllCustomers() {
             return View();
         }
-        public JsonResult ReturnData() {
+        public JsonResult ReturnData(string Name) {
             var data = db.CustomerDetails.ToList();
             return Json(data,JsonRequestBehavior.AllowGet);
         }

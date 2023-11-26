@@ -7,9 +7,11 @@ $(document).ready(function () {
         GetCustomer();
     });
 function GetCustomer() {
+    var name = $("#txtName").val();
     $.ajax({
         url: '/CustomerDetails/ReturnData',
         type: 'Get',
+        data: { Name:name },
         dataType: 'Json',
         success: OnSuccess
     });
@@ -85,126 +87,40 @@ function OnSuccess(response) {
                 render: function (data, type, row, meta) {
                     return row.ClosingBal;
                 }
+            },
+            {
+                data: 'Action',
+                render: function (data, type, row, meta) {
+                    return '<input type="checkbox" id="chk_' + row.Id + '" class="btn btn-primary" onclick="myFunction(' + row.ClosingBal + ', \'' + row.Id + '\')">';
+                }
+            },
+            {
+                data: 'Action',
+                render: function (data, type, row, meta) {
+                    var container = '<div style="display: flex;">';
+
+                    var firstButton = '<button type="button" id="' + row.Id + '" class="btn btn-primary" onclick="myFunction(' + row.ClosingBal + ')">Closing</button>';
+                    var secondButton = '<button type="button" id="secondBtn_' + row.Id + '" class="btn btn-secondary" onclick="anotherFunction(' + row.OpeningBal + ')">Opening</button>';
+
+                    var containerEnd = '</div>';
+
+                    return container + firstButton + secondButton + containerEnd;
+                    //return '<button type="button" id=' + row.Id + ' class="btn btn-primary" onclick="myFunction(' + row.ClosingBal + ')">Click me</button>';
+                }
             }
+        ],
+        columnDefs: [
+            { width: '2px', targets: [6] }
         ]
     }); 
 }
 
-
-//AccountDisplayModule = function () {
-
-//    var uri = {
-//        GetAccountDisplay: '/AccountDisplay/GetAccountDisplay',
-//        GetAccounts: '/AccountDisplay/GetAccounts',
-
-//    }
-
-//    var modeEnum = { "Find": 1, "Show": 2 };
-//    Object.freeze(modeEnum);
-
-//    var controls = {
-//        buttons: {
-//            show: $("#btnShow")
-//            //abort: $("#btnAbort"),
-//            //print: $("#btnPrint"),
-//            //save: $("#btnSave")
-//        },
-//        divs: {
-//            //accountDisplay: $("#divAccountDisplay"),
-//            //buttons: $("#divButtons")
-//        },
-//        tables: {
-//            DispalyCustomers: $("#dataTableData")
-//        },
-//        dropdown: {
-//           // customer: $("#ddlCustomer")
-//        },
-//        textbox: {
-
-
-//        }
-//    }
-
-//    var uiControls = {
-//        tables: {
-//        },
-//        dropdown: {
-//        }
-//    }
-
-//    var config = {
-//        mode: modeEnum.Find,
-//        allCombos: []
-//    }
-
-//    var pageVar = {
-
-//    };
-
-//    var formData = {
-//        details: {
-
-//        }
-//    }
-
-//    var initInvoices = function () {
-//        debugger;
-//        dt = null;
-//        pageVar.isInvoicesInit = true;
-//        pageVar.clientArea = $(window).height() - 30;
-//        var tableHeight = ((pageVar.clientArea - 205) > 300 ? (pageVar.clientArea - 205) : 300);
-//        dt = $("#dataTableData").DataTable({
-//            ajax: {
-//                url: '/CustomerDetails/GetInvoices',
-//                type:"Get"
-//            },
-//            "serverSide": true,
-//            "processing": true,
-//            columns: [
-//                { name: "CustomerName", data: "CustomerName", title: "Customer Name", visible: true },
-//                { name: "Address", data: "Address", title: "Address", visible: true },
+function myFunction(rowID) {
+    console.log('Button clicked for row with closing balance is :', rowID);
+    alert(rowID);
+}
+function anotherFunction(rowID) {
+    console.log('Button clicked for row with opening balance is :', rowID);
+    alert(rowID);
+}
 //                { name: "State", data: "State", title: "State", visible: true },
-//                { name: "Dist", data: "Dist", title: "Dist", visible: true },
-//                { name: "MobileNo", data: "MobileNo", title: "MobileNo", visible: true },
-//                { name: "Email", data: "Email", title: "Email", visible: true },
-//                { name: "DateOfBirth", data: "DateOfBirth", title: "Date Of Birth", visible: true },
-//                { name: "OpeningBal", data: "OpeningBal", title: "OpeningBal", visible: true },
-//                { name: "ClosingBal", data: "ClosingBal", title: "ClosingBal", visible: true },
-//                {
-//                    "width": "7%",
-//                    "defaultContent":
-//                        '<button class="btn-edit" type="button">Edit</button>'
-//                },
-//                {
-//                    "width": "7%",
-//                    "defaultContent":
-//                        '<button class="btn-delete"  type="button">Delete</button>'
-//                }
-//            ],
-//            //"lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
-//            info: false,
-//            destroy: false,
-//            select: {
-//                style: 'single'
-//            },
-//            order: [[0, "desc"]]
-//        });
-
-//    };
-
-
-//    $("#btnShow").on("click", function () {
-//        debugger;
-//        alert("show");
-//        initInvoices();
-//    });
-
-
-//    var init = function () {
-//        //initCombos();
-
-//    };
-
-//    return { init: init };
-//}();
-//AccountDisplayModule.init();

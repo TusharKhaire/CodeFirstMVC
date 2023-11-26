@@ -37,7 +37,9 @@ namespace TestDemoMVCCodeFirst
                 .Include("~/Content/bootstrap.min.css.map")
                 .Include("~/Content/Site.css")
                 .Include("~/Content/css/select2.css")
-                .Include("~/Content/css/select2.min.css"));
+                .Include("~/Content/css/select2.min.css")
+                .Include("~/Content/jquery.dataTables.css")
+                .Include("~/Content/jquery.dataTables.min.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Scripts/jquery-3.7.1.js")
@@ -50,9 +52,9 @@ namespace TestDemoMVCCodeFirst
                 .Include("~/Scripts/jquery.validate.unobtrusive.min.js")
                 .Include("~/Scripts/modernizr-2.8.3.js")
                 .Include("~/Scripts/select2.js")
-                .Include("~/Scripts/select2.min.js"));
-                //.Include("~/Scripts/select2.full.min.js")
-                //.Include("~/Scripts/jquery-3.7.1.min.js")
+                .Include("~/Scripts/select2.min.js")
+                .Include("~/Scripts/jquery.dataTables.js")
+                .Include("~/Scripts/jquery.dataTables.min.js"));
                 //.Include("~/Scripts/jquery-3.7.1.slim.js")
 
         }

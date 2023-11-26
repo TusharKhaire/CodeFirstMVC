@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using TestDemoCodeDAL.DAL.DataConnection;
 using TestDemoCodeDAL.DAL.Entity.Customer;
 using TestDemoCodeDAL.DAL;
+using DataTables.Mvc;
+
 namespace TestDemoMVCCodeFirst.Controllers
 {
     public class CustomerDetailsController : Controller
@@ -20,7 +22,31 @@ namespace TestDemoMVCCodeFirst.Controllers
         {
             return View(db.CustomerDetails.ToList());
         }
+        public JsonResult GetInvoices([ModelBinder(typeof(DataTablesBinder))] IDataTablesRequest requestModel)
+        {
+            var query = db.CustomerDetails.ToList();
+            //if (type == "ItemName")
+            //{
+            //    query = _itemDetailsService.GetAllItemDetails().Where(a => a.ItemId == itemName);
+            //}
+            var totalCount = query.Count();
+            var filteredCount = query.Count();
+            var data = query.ToList().Select(sm => new CustomerDetails()
+            {
+                //Package = sm.Package + " " + sm.UnitMaster.Description,
+                //mft = sm.ItemMaster.ManufactureMaster.Description,
+                //ItemDetailsId = sm.Id.ToString(),
+                //BatchName = sm.BatchName,
+                //GodownName = sm.Godown.GodownName,
+                //ItemName = sm.ItemMaster.Description,
+                //itemType = sm.ItemMaster.ItemTypeMaster.ItemType,
+                // ItemUnit = ,
+                //ItemUnit = sm.UnitMaster.Description,
 
+
+            }).ToList();
+            return Json(new DataTablesResponse(requestModel.Draw, data, filteredCount, totalCount), JsonRequestBehavior.AllowGet);
+        }
         // GET: CustomerDetails/Details/5
         public ActionResult Details(Guid? id)
         {
@@ -148,6 +174,14 @@ namespace TestDemoMVCCodeFirst.Controllers
                 var customerName = db.CustomerDetails.Where(a => a.CustomerName.Contains(searchText)).ToList();
                 return Json(customerName.Select(q => new { id = q.Id, text = q.CustomerName }), JsonRequestBehavior.AllowGet);
             } return Json("",JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DisplayAllCustomers() {
+            return View();
+        }
+        public JsonResult ReturnData() {
+            var data = db.CustomerDetails.ToList();
+            return Json(data,JsonRequestBehavior.AllowGet);
         }
 
     }

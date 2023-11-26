@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TestDemoCodeDAL.DAL.Entity.Customer.CustomerDetails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Display All Customer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div>
+    <input type="button" id="btnShow" value="Show" />
+</div>
+<table class="table" id="dataTableData">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>CustomerName</th>
+           <th>Address</th>
+           <th>State</th>
+           <th>Dist</th>
+           <th>MobileNo</th>
+           <th>Email</th>
+           <th>DateOfBirth</th>
+           <th>OpeningBal</th>
+           <th>ClosingBal</th>
+       </tr>
+   </thead>
+</table>
+
+@section scripts{
+    <script src="~/Scripts/Datatables_JS.js"></script>
+}

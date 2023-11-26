@@ -133,6 +133,7 @@ E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\roslyn\vbc.rsp
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\roslyn\VBCSCompiler.exe
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\roslyn\VBCSCompiler.exe.config
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\Antlr3.Runtime.dll
+E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\DataTables.Mvc.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\EntityFramework.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\EntityFramework.SqlServer.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\Microsoft.AspNet.Identity.Core.dll

@@ -60,6 +60,7 @@
     <Compile Include="Entity\Masters\GodownMaster.cs" />
     <Compile Include="Entity\Masters\ItemMaster.cs" />
     <Compile Include="Entity\Masters\ItemType.cs" />
+    <Compile Include="Entity\Masters\MenuMaster.cs" />
     <Compile Include="Entity\Masters\UserMaster.cs" />
     <Compile Include="Entity\Users.cs" />
     <Compile Include="Migrations\202305141529385_InitialCreate.cs" />
@@ -77,6 +78,10 @@
     <Compile Include="Migrations\202312160533566_UserMaster.cs" />
     <Compile Include="Migrations\202312160533566_UserMaster.Designer.cs">
       <DependentUpon>202312160533566_UserMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312161721537_MenuMaster.cs" />
+    <Compile Include="Migrations\202312161721537_MenuMaster.Designer.cs">
+      <DependentUpon>202312161721537_MenuMaster.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312160533566_UserMaster.resx">
       <DependentUpon>202312160533566_UserMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312161721537_MenuMaster.resx">
+      <DependentUpon>202312161721537_MenuMaster.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

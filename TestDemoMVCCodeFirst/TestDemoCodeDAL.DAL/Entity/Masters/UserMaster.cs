@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace TestDemoCodeDAL.DAL.Entity.Masters
 {
-    [ScaffoldTable(true)]
     public class UserMaster
     {
         [Key]

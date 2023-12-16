@@ -83,7 +83,6 @@ C:\Users\Tushar\source\repos\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug
 C:\Users\Tushar\source\repos\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.csproj.CopyComplete
 C:\Users\Tushar\source\repos\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.dll
 C:\Users\Tushar\source\repos\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.pdb
-E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.csproj.CoreCompileInputs.cache
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\TestDemoMVCCodeFirst.dll.config
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\TestDemoMVCCodeFirst.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\TestDemoMVCCodeFirst.pdb
@@ -166,6 +165,7 @@ E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\Newtonsoft.Json.xml
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\Antlr3.Runtime.pdb
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.csprojAssemblyReference.cache
+E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.csproj.CoreCompileInputs.cache
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.csproj.CopyComplete
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoMVCCodeFirst\obj\Debug\TestDemoMVCCodeFirst.pdb

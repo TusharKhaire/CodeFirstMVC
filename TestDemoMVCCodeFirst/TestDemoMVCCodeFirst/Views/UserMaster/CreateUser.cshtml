@@ -1,7 +1,13 @@
 ﻿@model TestDemoCodeDAL.DAL.Entity.Masters.UserMaster
 
 @{
-    ViewBag.Title = "CreateUser";
+
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            alert(@Html.Raw(Json.Encode(ViewBag.Message)));
+        </script>
+    }
 }
 
 @using (Html.BeginForm())
@@ -25,7 +31,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_passWord",@class = "control-label col-md-3" })
+                            @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_passWord", @class = "control-label col-md-3" })
                             <div class="col-md-9">
                                 @Html.EditorFor(a => a.PassWord, "", new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(a => a.PassWord, "", new { @class = "text-danger" })
@@ -34,7 +40,7 @@
                         <div class="form-group">
                             @Html.LabelFor(a => a.PassWord, "Confirm Password", htmlAttributes: new { @id = "lbl_password", @class = "control-label col-md-3" })
                             <div class="col-md-9">
-                                @Html.Password("Password","", new {@id="txt_password",@class = "form-control"  })
+                                @Html.Password("Password", "", new { @id = "txt_password", @class = "form-control" })
                             </div>
                         </div>
                         <div class="form-group">

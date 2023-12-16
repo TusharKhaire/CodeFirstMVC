@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMasterController.cs" />
     <Compile Include="Controllers\ItemTypeController.cs" />
+    <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +267,7 @@
     <Content Include="Views\Godown\Create.cshtml" />
     <Content Include="Views\ItemMaster\Index.cshtml" />
     <Content Include="Views\CustomerDetails\DisplayAllCustomers.cshtml" />
+    <Content Include="Views\UserMaster\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

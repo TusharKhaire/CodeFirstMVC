@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TestDemoCodeDAL.DAL.DataConnection;
@@ -34,12 +35,12 @@ namespace TestDemoMVCCodeFirst.Controllers
             return View(Itemlist);
         }
         [HttpGet]
-        public ActionResult CreateItem()
+        public async Task< ActionResult> CreateItem()
         {
             ItemMaster viewmodel = new ItemMaster();
             List<SelectListItem> ItemTypeList = new List<SelectListItem>();
             List<DDLData> DlList = new List<DDLData>();
-            foreach (var data in db.ItemType.ToList())
+                foreach (var data in db.ItemType.ToList())
             {
                 DDLData Dl = new DDLData();
                 Dl.Text = data.TypeName;

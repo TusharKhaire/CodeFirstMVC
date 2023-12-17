@@ -1,0 +1,65 @@
+﻿@model TestDemoCodeDAL.DAL.Entity.Masters.UserMaster
+
+@{
+
+    if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            alert(@Html.Raw(Json.Encode(ViewBag.Message)));
+        </script>
+    }
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="container mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3> Login</h3>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.UserName, "User Name", htmlAttributes: new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(a => a.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(a => a.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_passWord", @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.EditorFor(a => a.PassWord, "", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(a => a.PassWord, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_password", @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.Password("Password", "", new { @id = "txt_password", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-10">
+                                <input type="submit" class="btn btn-default" id="btnsubmit" value="Login" onclick="return Validation();" />
+                                <input type="reset" class="btn btn-default" id="btnreset" value="Cancal" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script type="text/javascript">
+    function Validation() {
+        return true;
+    }
+</script>

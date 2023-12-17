@@ -26,5 +26,10 @@ namespace TestDemoMVCCodeFirst.Controllers
 
             return View();
         }
+
+        public ActionResult Menu_List()
+        {
+            return View("_Menu");
+        }
     }
 }

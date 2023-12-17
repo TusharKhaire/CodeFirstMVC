@@ -1,0 +1,62 @@
+﻿@model TestDemoMVCCodeFirst.ViewModel.SetMenu
+@{
+    ViewBag.Title = "setMenuMapping";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="container mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3> Set Menu Access</h3>
+                    </div>
+                    <hr />
+                    <div class="card-body">
+                        <div class="form-group">
+                            @Html.Label("Select User", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(x => x.UserList, new SelectList(Model.UserList, "ID", "UserName"), "-- Select User --", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Select Menus", new { @class = "control-label col-md-3" })
+                            <div class="col-md-9">
+                                @Html.Password("Password", "", new { @id = "txt_password", @class = "form-control" })
+                                @*@Html.DropDownList("SelectedItems", new SelectList(Model.MenuList, "ID", "Name", Model.MenuList.Where(item => item.IsChecked).Select(item => item.ID)), new { multiple = "multiple" })*@
+                                <select id="SelectedItems" name="SelectedItems" multiple="multiple">
+                                    @foreach (var item in Model.MenuList)
+                                    {
+                                        <option value="@item.ID" @(item.IsChecked ? "selected" : "")>@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-10">
+                                <input type="submit" class="btn btn-default" id="btnsubmit" value="Save" onclick="return Validation();" />
+                                <input type="reset" class="btn btn-default" id="btnreset" value="Cancal" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#SelectedItems").multiselect({
+                includeSelectAllOption: true
+            });
+        });
+    </script>
+}

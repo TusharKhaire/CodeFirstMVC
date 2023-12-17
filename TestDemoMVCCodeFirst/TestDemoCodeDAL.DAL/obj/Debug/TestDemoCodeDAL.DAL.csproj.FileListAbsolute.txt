@@ -72,3 +72,7 @@ E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.D
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.dll
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.pdb
 E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.MenuMaster.resources
+E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.Add_UserID_in_MenuMaster.resources
+E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.csprojAssemblyReference.cache
+E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.removeUserid.resources
+E:\Projects\TestDemoMVCCodeFirst\TestDemoCodeDAL.DAL\obj\Debug\TestDemoCodeDAL.DAL.Migrations.addMenuAccessTable.resources

@@ -22,6 +22,7 @@ namespace TestDemoCodeDAL.DAL.DataConnection
         public DbSet<GodownMaster> godownMaster { get; set; }  //31-05-2023
         public DbSet<UserMaster> UserMaster { get; set; }  //16-12-2023
         public DbSet<MenuMaster> MenuMaster { get; set; }  //16-12-2023
+        public DbSet<MenuAccess> MenuAccess { get; set; }  //17-12-2023
 
     }
 }

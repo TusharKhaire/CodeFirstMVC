@@ -12,5 +12,7 @@ namespace TestDemoMVCCodeFirst.ViewModel
     {
           public List<UserMaster> UserList { get; set; }
           public  List<MenuMaster> MenuList { get; set; }
+        public int SelectedUserId { get; set; } // Property to store the selected user ID
+        public List<int> SelectedMenuIds { get; set; }
     }
 }

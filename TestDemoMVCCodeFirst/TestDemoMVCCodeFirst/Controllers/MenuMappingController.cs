@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TestDemoCodeDAL.DAL.DataConnection;
+using TestDemoCodeDAL.DAL.Entity.Masters;
 using TestDemoMVCCodeFirst.ViewModel;
 
 namespace TestDemoMVCCodeFirst.Controllers
@@ -23,7 +24,24 @@ namespace TestDemoMVCCodeFirst.Controllers
             menu.MenuList = db.MenuMaster.ToList();
             return View(menu);
         }
+        [HttpPost]
+        public ActionResult setMenuMapping(SetMenu menu)
+        {
+            int selectedUserId = menu.SelectedUserId;
+            List<int> selectedMenuIds = menu.MenuList.Where(m => m.IsChecked).Select(m => m.ID).ToList();
 
+            foreach (int menuId in selectedMenuIds)
+            {
+                var mapping = new MenuAccess()
+                {
+                    userId = selectedUserId,
+                    MenuId = menuId
+                };
+                db.MenuAccess.Add(mapping);
+                db.SaveChanges();
+            }
+            return View("setMenuMapping"); 
+        }
 
     }
 }

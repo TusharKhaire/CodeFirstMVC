@@ -39,7 +39,8 @@ namespace TestDemoMVCCodeFirst
                 .Include("~/Content/css/select2.css")
                 .Include("~/Content/css/select2.min.css")
                 .Include("~/Content/jquery.dataTables.css")
-                .Include("~/Content/jquery.dataTables.min.css"));
+                .Include("~/Content/jquery.dataTables.min.css")
+                .Include("~/Content/SideNavBar.css"));
 
             bundles.Add(new ScriptBundle("~/Bundles/js")
                 .Include("~/Scripts/jquery-3.7.1.js")

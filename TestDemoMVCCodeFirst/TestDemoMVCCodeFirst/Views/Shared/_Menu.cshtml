@@ -1,1 +1,39 @@
-﻿
+﻿@model List<TestDemoCodeDAL.DAL.Entity.Masters.MenuMaster>
+
+<ul>
+    @foreach (var item in Model.Where(i => i.ParentId == 0))
+    {
+        <li>
+            <a href="@item.Url" data-submenu-id="submenu-@item.ID">@item.Name</a>
+            @RenderSubMenu(item.ID)
+        </li>
+    }
+</ul>
+
+@helper RenderSubMenu(int parentId)
+{
+    var submenus = Model.Where(i => i.ParentId == parentId);
+
+    if (submenus.Any())
+    {
+        <ul class="submenu" id="submenu-@parentId">
+            @foreach (var submenu in submenus)
+            {
+                <li>
+                    <a href="@submenu.Url">@submenu.Name</a>
+                    @RenderSubMenu(submenu.ID) @* Recursive call for submenus*@
+                </li>
+            }
+        </ul>
+    }
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$('.submenu').hide(); // Hide all submenus initially
+        $('.toggle-submenu').on('click', function () {
+            var submenuId = $(this).data('submenu-id');
+            $('#' + submenuId).toggle();
+        });
+    })
+</script>

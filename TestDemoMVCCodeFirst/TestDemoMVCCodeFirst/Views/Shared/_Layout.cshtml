@@ -7,6 +7,7 @@
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
     @Styles.Render("~/Bundles/css")
+    @Scripts.Render("~/Bundles/js")
     @*<link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
         <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />*@
 
@@ -14,25 +15,32 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="menu">
+        </div>
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Customer", "Create", "CustomerDetails")</li>
-                    <li>@Html.ActionLink("Item", "CreateItem", "ItemMaster")</li>
-                </ul>
-            </div>
+            @*<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>*@
+            @*<div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Customer", "Create", "CustomerDetails")</li>
+                        <li>@Html.ActionLink("Item", "CreateItem", "ItemMaster")</li>
+                    </ul>
+                </div>*@
         </div>
     </div>
+
+    
     <div class="container body-content">
+        <div id="sideNav">
+            @Html.Action("Menu_List", "Home")
+        </div>
         @RenderBody()
         <hr />
         <footer>
@@ -42,10 +50,14 @@
 
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
-    @Scripts.Render("~/Bundles/js")
+    
     @*<script src="~/Scripts/jquery.dataTables.js"></script>
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>*@
+        <script src="~/Scripts/jquery.dataTables.min.js"></script>*@
     @RenderSection("scripts", required: false)
 
 </body>
 </html>
+<script>
+    window.onload();
+</script>
+

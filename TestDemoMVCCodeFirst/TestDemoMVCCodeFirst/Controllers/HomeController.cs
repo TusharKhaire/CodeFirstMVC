@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestDemoCodeDAL.DAL.DataConnection;
 
 namespace TestDemoMVCCodeFirst.Controllers
 {
     public class HomeController : Controller
     {
+        DataContext db = new DataContext();
         public ActionResult Index()
         {
             return View();
@@ -29,7 +31,8 @@ namespace TestDemoMVCCodeFirst.Controllers
 
         public ActionResult Menu_List()
         {
-            return View("_Menu");
+            var menuItems = db.MenuMaster.ToList();
+            return PartialView("_Menu", menuItems);
         }
     }
 }

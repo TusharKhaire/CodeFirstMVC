@@ -19,21 +19,22 @@
                         <div class="form-group">
                             @Html.Label("Select User", new { @class = "control-label col-md-3" })
                             <div class="col-md-9">
-                                @Html.DropDownListFor(x => x.UserList, new SelectList(Model.UserList, "ID", "UserName"), "-- Select User --", new { @class = "form-control" })
+                                @Html.DropDownListFor(x => x.SelectedUserId, new SelectList(Model.UserList, "ID", "UserName"), "-- Select User --", new { @class = "form-control" })
                             </div>
                         </div>
-
                         <div class="form-group">
                             @Html.Label("Select Menus", new { @class = "control-label col-md-3" })
                             <div class="col-md-9">
-                                @Html.Password("Password", "", new { @id = "txt_password", @class = "form-control" })
-                                @*@Html.DropDownList("SelectedItems", new SelectList(Model.MenuList, "ID", "Name", Model.MenuList.Where(item => item.IsChecked).Select(item => item.ID)), new { multiple = "multiple" })*@
-                                <select id="SelectedItems" name="SelectedItems" multiple="multiple">
-                                    @foreach (var item in Model.MenuList)
+                                <div class="custom-border">
+                                    @for (int i = 0; i < Model.MenuList.Count; i++)
                                     {
-                                        <option value="@item.ID" @(item.IsChecked ? "selected" : "")>@item.Name</option>
+                                        <div>
+                                            @Html.CheckBoxFor(m => m.MenuList[i].IsChecked)
+                                            @Html.LabelFor(m => m.MenuList[i].IsChecked, Model.MenuList[i].Name)
+                                            @Html.HiddenFor(m => m.MenuList[i].ID) @*// Include hidden field for ID if needed*@
+                                        </div>
                                     }
-                                </select>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,12 +52,24 @@
 
 }
 
-@section scripts {
-    <script>
-        $(document).ready(function () {
-            $("#SelectedItems").multiselect({
-                includeSelectAllOption: true
-            });
-        });
-    </script>
-}
+
+<style>
+    .custom-border {
+        height: 200px;
+        width: 280px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-radius:4px; /* Adjust the border-radius for rounded corners */
+        padding: 5px;
+        margin-right: -15px; /* Adjust for scrollbar width */
+    }
+
+        .custom-border::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .custom-border::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+</style>

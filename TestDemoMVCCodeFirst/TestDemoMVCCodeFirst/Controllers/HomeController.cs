@@ -31,7 +31,18 @@ namespace TestDemoMVCCodeFirst.Controllers
 
         public ActionResult Menu_List()
         {
-            var menuItems = db.MenuMaster.ToList();
+            if (Session["userid"] == null || (int)Session["userid"] == 0)
+            {
+                return RedirectToAction("login","login");
+            }
+            int userID = (int)Session["UserId"];
+            var menuItems = (from um in db.UserMaster
+                             join ma in db.MenuAccess on um.ID equals ma.userId
+                             join mm in db.MenuMaster on ma.MenuId equals mm.ID
+                             where ma.userId == userID
+                             select mm).ToList();
+
+            //var menuItems = db.MenuMaster.ToList();
             return PartialView("_Menu", menuItems);
         }
     }

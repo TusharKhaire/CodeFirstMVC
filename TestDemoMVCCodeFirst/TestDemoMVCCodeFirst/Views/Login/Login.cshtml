@@ -1,5 +1,11 @@
 ﻿@model TestDemoCodeDAL.DAL.Entity.Masters.UserMaster
-
+@{ Layout = null;
+}
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
 @{
 
     if (ViewBag.Message != null)
@@ -31,12 +37,12 @@
                             </div>
                         </div>
                         @*<div class="form-group">
-                            @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_passWord", @class = "control-label col-md-3" })
-                            <div class="col-md-9">
-                                @Html.EditorFor(a => a.PassWord, "", new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(a => a.PassWord, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+                                @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_passWord", @class = "control-label col-md-3" })
+                                <div class="col-md-9">
+                                    @Html.EditorFor(a => a.PassWord, "", new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(a => a.PassWord, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@
                         <div class="form-group">
                             @Html.LabelFor(a => a.PassWord, "Password", htmlAttributes: new { @id = "lbl_password", @class = "control-label col-md-3" })
                             <div class="col-md-9">

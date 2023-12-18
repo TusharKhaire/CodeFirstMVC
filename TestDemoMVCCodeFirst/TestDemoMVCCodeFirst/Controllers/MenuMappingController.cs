@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using TestDemoCodeDAL.DAL.DataConnection;
 using TestDemoCodeDAL.DAL.Entity.Masters;
 using TestDemoMVCCodeFirst.ViewModel;
@@ -28,6 +29,12 @@ namespace TestDemoMVCCodeFirst.Controllers
         public ActionResult setMenuMapping(SetMenu menu)
         {
             int selectedUserId = menu.SelectedUserId;
+            var records = db.MenuAccess.Where(a => a.userId == selectedUserId).ToList();
+            if (records.Any())
+            {
+                db.MenuAccess.RemoveRange(records);
+                db.SaveChanges();
+            }
             List<int> selectedMenuIds = menu.MenuList.Where(m => m.IsChecked).Select(m => m.ID).ToList();
 
             foreach (int menuId in selectedMenuIds)
@@ -40,7 +47,7 @@ namespace TestDemoMVCCodeFirst.Controllers
                 db.MenuAccess.Add(mapping);
                 db.SaveChanges();
             }
-            return View("setMenuMapping"); 
+            return RedirectToAction("setMenuMapping", "MenuMapping"); 
         }
 
     }

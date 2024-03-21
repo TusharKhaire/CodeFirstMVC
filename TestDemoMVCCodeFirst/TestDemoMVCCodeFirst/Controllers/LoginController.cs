@@ -22,7 +22,7 @@ namespace TestDemoMVCCodeFirst.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> Login(UserMaster User) {
+        public  ActionResult Login(UserMaster User) {
             var data = db.UserMaster.Where(x => x.UserName == User.UserName && 
                                            x.PassWord==User.PassWord).FirstOrDefault();
             if (data != null)

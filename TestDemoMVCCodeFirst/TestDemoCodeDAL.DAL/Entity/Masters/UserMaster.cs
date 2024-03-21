@@ -15,6 +15,6 @@ namespace TestDemoCodeDAL.DAL.Entity.Masters
         public string UserName { get; set; }
         [Required(ErrorMessage = "Please Fill Password")]
         public string PassWord { get; set; }
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
     }
 }

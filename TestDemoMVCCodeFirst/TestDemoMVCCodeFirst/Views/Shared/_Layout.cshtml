@@ -7,7 +7,7 @@
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
     @Styles.Render("~/Bundles/css")
-    @Scripts.Render("~/Bundles/js")
+    @*@Scripts.Render("~/Bundles/js")*@
     @*<link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
         <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />*@
 
@@ -37,7 +37,7 @@
     </div>
     <div class="container body-content">
         <div id="sideNav">
-            @Html.Action("Menu_List", "Home")
+       @*     @Html.Action("Menu_List", "Home")*@
         </div>
         @RenderBody()
         <hr />

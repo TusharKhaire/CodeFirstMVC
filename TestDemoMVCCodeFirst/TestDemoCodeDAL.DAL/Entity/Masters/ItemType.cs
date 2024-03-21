@@ -14,5 +14,6 @@ namespace TestDemoCodeDAL.DAL.Entity.Masters
         [Required,Display(Name ="Type Name")]
         public string TypeName { get; set; }
         public string Details { get; set; }
+        public bool isActive { get; set; }=true;
     }
 }

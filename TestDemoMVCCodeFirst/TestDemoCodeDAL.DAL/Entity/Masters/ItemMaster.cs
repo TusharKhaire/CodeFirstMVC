@@ -19,6 +19,7 @@ namespace TestDemoCodeDAL.DAL.Entity.Masters
         public Guid ItemType { get; set; }
         [Range (0,100,ErrorMessage ="Please enter Valid Gst up to 100 %")]
         public double Gst { get; set; }
+        public bool isActive { get; set; } = true;
     }
     
 }
